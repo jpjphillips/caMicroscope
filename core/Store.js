@@ -228,6 +228,76 @@ class Store {
     }).then(this.errorHandler)
   }
   /**
+ * post user
+ * @param {object} json - the user data
+ * @return {promise} - promise which resolves with response
+ **/
+   addRegistration(json) {
+    const suffix = 'Registration/post';
+    const url = this.base + suffix;
+    return fetch(url, {
+      method: 'POST',
+      credentials: 'include',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        // "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: JSON.stringify(json),
+    }).then(this.errorHandler);
+  }
+    /**
+ * post user
+ * @param {object} json - the user data
+ * @return {promise} - promise which resolves with response
+ **/
+   addDemo(json) {
+     const suffix = 'Demo/post';
+     const url = this.base + suffix;
+     return fetch(url, {
+      method: 'POST',
+      credentials: 'include',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        // "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: JSON.stringify(json),
+    }).then(this.errorHandler);
+  }
+  findRegistration(creator) {
+    var suffix = "Registration/find"
+    var url = this.base + suffix;
+    var query = {}
+    var bySlideId
+    if (creator) {
+      query.creator = creator
+    }
+    return fetch(url + "?" + objToParamStr(query), {
+      credentials: "include",
+      mode: "cors"
+    }).then(this.errorHandler)
+  }
+  /**
+ * post user
+ * @param {object} json - the user data
+ * @return {promise} - promise which resolves with response
+ **/
+   addExit(json) {
+    const suffix = 'Exit/post';
+    const url = this.base + suffix;
+    return fetch(url, {
+      method: 'POST',
+      credentials: 'include',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        // "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: JSON.stringify(json),
+    }).then(this.errorHandler);
+  }
+  /**
    * delete mark
    * @param {object} id - the mark object id
    * @param {object} slide - the associated slide
