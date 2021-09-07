@@ -132,7 +132,7 @@
         <div>Have a great day.</div>
         <br/>
         <div>*=Required</div>
-        
+
         <form class="row g-3 needs-validation" novalidate action="http://localhost:4010/apps/landing/crowd.html">
 
             <div class="mb-3">
@@ -276,10 +276,6 @@
             
             <button type="submit" id="save">Save</button>
 
-            <!-- <a href="http://localhost:4010/apps/landing/crowd.html">
-                <button type="submit" id="save">Save</button>
-            </a> -->
-
         </form>
 </section>
 
@@ -349,18 +345,18 @@
     var isNewOne = false;
     const store = new Store('../../../data/')
     //const creator = "jpphillips@uchicago.edu"//getUserId()
-    window.onload = async () => {
-        const data = await store.findRegistration({creator:getUserId()});
-        if(data.error){
-            // TODO deal with error
-            return;
-        }
+    window.onload = async() => {
+        const data = store.findRegistration({creator:getUserId()});
+        // if(data.error){
+        //     // TODO deal with error
+        //     return;
+        // }
         if(data.length == 0) { // the user doesn't exist, need to reg
             isNewOne = true;
         } else { // the user exist, need to update
             isNewOne = false;
             // fill the form with existing registration data
-            document.getElementById('name').value = data[0].name;
+            document.getElementById('name').value = data.name;
             document.getElementById('contactEmail').value = data[0].contactEmail;
             document.getElementById('platformEmail').value = data[0].platformEmail;
             document.getElementById('phone').value = data[0].phone;
